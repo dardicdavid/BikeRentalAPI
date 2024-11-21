@@ -9,6 +9,6 @@ namespace BikeRentalAPI.Database
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options){}
 
-        private DbSet<UserInfo> userInfos { get; set; } = null;
+        public DbSet<UserInfo> userInfos { get; set; } = null;
     }
 }
