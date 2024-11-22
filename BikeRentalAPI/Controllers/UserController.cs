@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 namespace BikeRentalAPI.Controllers;
 
 [Route("users/[controller]")]
-[ApiController]
 public class UserController : Controller
 {
     
