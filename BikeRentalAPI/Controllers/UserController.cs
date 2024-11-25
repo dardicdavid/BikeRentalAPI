@@ -30,8 +30,10 @@ public class UserController : Controller
             PasswordHash = model.Password
         };
         
+        //registering previously created user into auth table
         var result1 = await _userManager.CreateAsync(user, user.PasswordHash!);
         
+        //getting user id
         var userId = await _userManager.GetUserIdAsync(user);
         UserInfo userInfo = new()
         {
@@ -40,7 +42,8 @@ public class UserController : Controller
             UserId = userId
         };
         
-        _context.userInfos.Add(userInfo);
+        //adding additional user information into separate table
+        _context.UserInfos.Add(userInfo);
         var result2 = await _context.SaveChangesAsync();
         
 
@@ -48,7 +51,15 @@ public class UserController : Controller
         {
             return Ok("User registered successfully!");
         }
+        
         return BadRequest("Failed to register user!");
+    }
+
+    [HttpPost("logout")]
+    public async Task<ActionResult> LogOut()
+    {
+        await _signInManager.SignOutAsync();
+        return Ok("User logged out!");
     }
 
 }

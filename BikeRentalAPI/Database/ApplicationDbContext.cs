@@ -8,7 +8,31 @@ namespace BikeRentalAPI.Database
     public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options){}
-
-        public DbSet<UserInfo> userInfos { get; set; } = null;
+        
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            
+            modelBuilder.Entity<UserInfo>()
+                .Property(i => i.Id)
+                .ValueGeneratedOnAdd();
+            
+            modelBuilder.Entity<Bike>()
+                .Property(i => i.Id)
+                .ValueGeneratedOnAdd();
+            
+            modelBuilder.Entity<Station>()
+                .Property(i => i.Id)
+                .ValueGeneratedOnAdd();
+            
+            modelBuilder.Entity<RentalSchedule>()
+                .Property(i => i.Id)
+                .ValueGeneratedOnAdd();
+        }
+        public DbSet<UserInfo> UserInfos { get; set; } = null;
+        public DbSet<Bike> Bikes { get; set; } = null;
+        public DbSet<Station> Stations { get; set; } = null;
+        
+        public DbSet<RentalSchedule> RentalSchedules { get; set; } = null;
     }
 }

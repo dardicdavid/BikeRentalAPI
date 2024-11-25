@@ -1,6 +1,7 @@
 ﻿using System.Security.Claims;
 using BikeRentalAPI.Database;
 using BikeRentalAPI.Models;
+using BikeRentalAPI.Models.DTO;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -25,20 +26,28 @@ public class UserInfoController : ControllerBase
         //gets current logged in user's Id
         string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-        if (_context.userInfos is null)
+        if (_context.UserInfos is null)
         {
             return NotFound();
         }
         
         //finds user information column by UserId adds it to a list 
-        var user = await _context.userInfos.Where(uid => uid.UserId.Contains(userId)).ToListAsync();
-
+        var user = await _context.UserInfos.FirstOrDefaultAsync(uid => uid.UserId == userId);
+        
         if (user is null)
         {
             return NotFound();
         }
+
+        UserInfoGetResponse userDto = new()
+        {
+            FirstName = user.FirstName,
+            LastName = user.LastName, 
+            Gender = user.Gender,
+            PhoneNumber = user.PhoneNumber,
+        };
         
-        return Ok(user);
+        return Ok(userDto);
         
     }
 }
