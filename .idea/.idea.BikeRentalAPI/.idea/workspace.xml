@@ -11,13 +11,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d1764dc0-8e31-4946-8a12-df1d726bd550" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BikeRentalAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BikeRentalAPI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BikeRentalAPI/BikeRentalAPI.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/BikeRentalAPI/BikeRentalAPI.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BikeRentalAPI/Controllers/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BikeRentalAPI/Controllers/UserController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BikeRentalAPI/Controllers/UserInfoController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BikeRentalAPI/Controllers/UserInfoController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BikeRentalAPI/Database/ApplicationDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BikeRentalAPI/Database/ApplicationDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BikeRentalAPI/Migrations/20241120215611_Initial.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BikeRentalAPI/Migrations/20241120215611_Initial.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BikeRentalAPI/Migrations/ApplicationDbContextModelSnapshot.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BikeRentalAPI/Models/UserInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BikeRentalAPI/Models/UserInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BikeRentalAPI/bin/Debug/net8.0/BikeRentalAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/BikeRentalAPI/bin/Debug/net8.0/BikeRentalAPI.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BikeRentalAPI/bin/Debug/net8.0/BikeRentalAPI.exe" beforeDir="false" afterPath="$PROJECT_DIR$/BikeRentalAPI/bin/Debug/net8.0/BikeRentalAPI.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BikeRentalAPI/bin/Debug/net8.0/BikeRentalAPI.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/BikeRentalAPI/bin/Debug/net8.0/BikeRentalAPI.pdb" afterDir="false" />
@@ -31,7 +26,6 @@
       <change beforePath="$PROJECT_DIR$/BikeRentalAPI/obj/Debug/net8.0/ref/BikeRentalAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/BikeRentalAPI/obj/Debug/net8.0/ref/BikeRentalAPI.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BikeRentalAPI/obj/Debug/net8.0/refint/BikeRentalAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/BikeRentalAPI/obj/Debug/net8.0/refint/BikeRentalAPI.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BikeRentalAPI/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/BikeRentalAPI/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BikeRentalAPI/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/BikeRentalAPI/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +46,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d399b0dd50b08f7f90be4dfbd852c2db7ab21e28ab02ea4a155287700f32b/NotFoundResult.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ddfe5f2cab585726db85fc046e76ea5725f69d647c242379a11c6da8029c727/ClaimsPrincipal.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 5
@@ -146,14 +141,27 @@
       <workItem from="1732326063955" duration="1143000" />
       <workItem from="1732384251445" duration="994000" />
       <workItem from="1732466278680" duration="8698000" />
-      <workItem from="1732548937504" duration="13202000" />
+      <workItem from="1732548937504" duration="13444000" />
+      <workItem from="1732648759594" duration="4994000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
@@ -162,16 +170,29 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/BikeRentalAPI/Controllers/UserInfoController.cs</url>
-          <line>41</line>
-          <properties documentPath="C:\Users\David\source\repos\BikeRentalAPI\BikeRentalAPI\Controllers\UserInfoController.cs" containingFunctionPresentation="Method 'GetUserInfo'">
+          <line>63</line>
+          <properties documentPath="C:\Users\David\source\repos\BikeRentalAPI\BikeRentalAPI\Controllers\UserInfoController.cs" containingFunctionPresentation="Method 'UpdateUserInfo'">
             <startOffsets>
-              <option value="1118" />
+              <option value="1741" />
             </startOffsets>
             <endOffsets>
-              <option value="1331" />
+              <option value="1826" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="1" />
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/BikeRentalAPI/Controllers/UserInfoController.cs</url>
+          <line>76</line>
+          <properties documentPath="C:\Users\David\source\repos\BikeRentalAPI\BikeRentalAPI\Controllers\UserInfoController.cs" containingFunctionPresentation="Method 'UpdateUserInfo'">
+            <startOffsets>
+              <option value="2064" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2109" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

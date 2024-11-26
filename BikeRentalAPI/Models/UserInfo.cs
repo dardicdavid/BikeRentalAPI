@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Identity;
 
 namespace BikeRentalAPI.Models;
 
@@ -11,5 +12,6 @@ public class UserInfo
     public int? PhoneNumber { get; set; }
     public string? Gender { get; set; }
     public string UserId { get; set; }
+    
     
 }
