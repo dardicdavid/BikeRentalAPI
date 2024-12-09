@@ -21,7 +21,7 @@ public class UserController : Controller
     }
 
     [HttpPost("register")]
-    public async Task<IActionResult> Register(RegisterModel model)
+    public async Task<IActionResult> Register([FromBody]RegisterModel model)
     {
         var user = new IdentityUser()
         {

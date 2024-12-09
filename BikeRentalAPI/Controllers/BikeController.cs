@@ -50,7 +50,7 @@ public class BikeController : Controller
     //[Authorize(Roles = "Admin")]
     [AllowAnonymous]
     [HttpPost("addBike")]
-    public async Task<ActionResult<Bike>> AddBike(Bike bike)
+    public async Task<ActionResult<Bike>> AddBike([FromBody]Bike bike)
     {
         
         //checking if license plate already exists to prevent duplicates

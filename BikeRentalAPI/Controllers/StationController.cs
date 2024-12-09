@@ -27,8 +27,7 @@ public class StationController : Controller
 
         return await _context.Stations.ToListAsync();
     }
-
-    [AllowAnonymous]
+    
     [HttpGet("{Id}")]
     public async Task<ActionResult<Station>> GetStation(int Id)
     {
@@ -48,7 +47,7 @@ public class StationController : Controller
     
     //[Authorize(Roles = "Admin")]
     [HttpPost("addStation")]
-    public async Task<ActionResult<Station>> AddStation(Station station)
+    public async Task<ActionResult<Station>> AddStation([FromBody]Station station)
     {
         var stationNameCheck = _context.Stations.AnyAsync(s => s.Name == station.Name);
         var locationCheck = _context.Stations.AnyAsync(c => c.Latitude == station.Latitude && c.Longitude == station.Longitude);
@@ -58,5 +57,6 @@ public class StationController : Controller
         _context.Stations.Add(station);
         await _context.SaveChangesAsync();
         return CreatedAtAction(nameof(GetStation), new { id = station.Id }, station);
+        
     }
 }
