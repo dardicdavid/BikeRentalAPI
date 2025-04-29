@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace BikeRentalAPI.Controllers;
 
 [Authorize]
-[Route("api/[controller]")]
+[Route("[controller]")]
 public class StationController : Controller
 {
     private readonly ApplicationDbContext _context;
@@ -17,6 +17,7 @@ public class StationController : Controller
         _context = context;
     }
     
+    [Authorize(Roles = "User, Admin")]
     [HttpGet("getStations")]
     public async Task<ActionResult<IEnumerable<Station>>> GetStations()
     {
@@ -27,7 +28,19 @@ public class StationController : Controller
 
         return await _context.Stations.ToListAsync();
     }
+
+    [Authorize(Roles = "User, Admin")]
+    [HttpGet("getStationsByCity")]
+    public async Task<ActionResult<IEnumerable<Station>>> GetStationsByCity(string city)
+    {
+        if (_context.Stations is null)
+        {
+            return NotFound();
+        }
+        return await _context.Stations.Where(s => s.City == city).ToListAsync();
+    }
     
+    [Authorize(Roles = "User, Admin")]
     [HttpGet("{Id}")]
     public async Task<ActionResult<Station>> GetStation(int Id)
     {
@@ -45,7 +58,7 @@ public class StationController : Controller
         return station;
     }
     
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     [HttpPost("addStation")]
     public async Task<ActionResult<Station>> AddStation([FromBody]Station station)
     {

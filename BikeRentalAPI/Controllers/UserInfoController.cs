@@ -10,7 +10,7 @@ using NuGet.Versioning;
 namespace BikeRentalAPI.Controllers;
 
 [Authorize]
-[Route("users/[controller]")]
+[Route("users/")]
 public class UserInfoController : ControllerBase
 {
     private readonly ApplicationDbContext _context;
@@ -20,6 +20,7 @@ public class UserInfoController : ControllerBase
         _context = context;
     }
     
+    [Authorize(Roles = "User, Admin")]
     [HttpGet("getUserInfo")]
     public async Task<ActionResult<UserInfo>> GetUserInfo()
     {
@@ -41,6 +42,7 @@ public class UserInfoController : ControllerBase
 
         UserInfoGetResponse userDto = new()
         {
+            Id = user.Id,
             FirstName = user.FirstName,
             LastName = user.LastName, 
             Gender = user.Gender,
@@ -50,6 +52,7 @@ public class UserInfoController : ControllerBase
         return Ok(userDto);
     }
     
+    [Authorize(Roles = "User, Admin")]
     [HttpPost("updateUserInfo")]
     public async Task<ActionResult<UserInfo>> UpdateUserInfo([FromBody]UserInfoPutRequest userInfo)
     {

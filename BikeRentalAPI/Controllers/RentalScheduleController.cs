@@ -10,22 +10,29 @@ using Microsoft.EntityFrameworkCore;
 namespace BikeRentalAPI.Controllers;
 
 [Authorize]
-[Route("api/[controller]")]
+[Route("[controller]")]
 public class RentalScheduleController : Controller
 {
-    public readonly ApplicationDbContext _context;
+    private readonly ApplicationDbContext _context;
 
     public RentalScheduleController(ApplicationDbContext context)
     {
         _context = context;
     }
 
+    [Authorize(Roles = "User, Admin")]
     [HttpPost]
     [Route("Rent")]
     public async Task<ActionResult> Rent([FromBody]RentalSchedulePostRequest rentalSchedulePostRequest)
     {
         
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        var newRental = rentalSchedulePostRequest;
+
+        if (newRental.StartDate > rentalSchedulePostRequest.EndDate)
+        {
+            return BadRequest("Start date cannot be earlier than end date");
+        }
 
         if (_context.UserInfos is null)
         {
@@ -40,16 +47,18 @@ public class RentalScheduleController : Controller
                 r.IsActive == true
             ).ToListAsync();
 
+        RentalSchedule rentalSchedule = new()
+        {
+            StartDate = newRental.StartDate,
+            EndDate = newRental.EndDate,
+            IsActive = true,
+            IsCancelled = false,
+            BikeId = newRental.BikeId,
+            UserId = user.Id,
+        };
+        
         if (currentRentals.Count == 0)
         {
-            RentalSchedule rentalSchedule = new()
-            {
-                StartDate = rentalSchedulePostRequest.StartDate,
-                EndDate = rentalSchedulePostRequest.EndDate,
-                IsActive = true,
-                BikeId = rentalSchedulePostRequest.BikeId,
-                UserId = user.Id,
-            }; 
             
             _context.RentalSchedules.Add(rentalSchedule);
             
@@ -58,11 +67,28 @@ public class RentalScheduleController : Controller
             return CreatedAtAction(nameof(GetRental), new { id = rentalSchedule.Id }, rentalSchedulePostRequest);
         }
         
+        for(int i = 0; i < currentRentals.Count; i++)
+        {
+            if (newRental.EndDate <= currentRentals[i].StartDate && newRental.StartDate >= currentRentals[i].EndDate)
+            {
+                continue;
+            }
+            else
+            {
+                return BadRequest("Desired schedule overlaps with already existing schedule.");
+            }
+
+        }
         
         
-        return Ok("!");
+        _context.RentalSchedules.Add(rentalSchedule);
+            
+        _context.SaveChanges();
+            
+        return CreatedAtAction(nameof(GetRental), new { id = rentalSchedule.Id }, rentalSchedulePostRequest);
+        
     }
-    
+    [Authorize(Roles = "User, Admin")]
     [HttpGet]
     [Route("getUserRentalSchedule")]
     public async Task<ActionResult<IEnumerable<RentalSchedule>>> GetUserRentalSchedule()
@@ -80,6 +106,7 @@ public class RentalScheduleController : Controller
         return await _context.RentalSchedules.ToListAsync();
     }
     
+    [Authorize(Roles = "User, Admin")]
     [HttpGet("{Id}")]
     public async Task<ActionResult<RentalSchedule>> GetRental(int Id)
     {
@@ -96,6 +123,32 @@ public class RentalScheduleController : Controller
         }
 
         return rental;
+    }
+
+    [Authorize(Roles = "User, Admin")]
+    [HttpPatch]
+    public async Task<ActionResult> CancelRental(int Id)
+    {
+        if (_context.RentalSchedules is null)
+        {
+            return NotFound();
+
+        }
+        
+        var rental = await _context.RentalSchedules.FindAsync(Id);
+
+        if (rental is null)
+        {
+            return NotFound();
+        }
+        
+        rental.IsActive = false;
+        rental.IsCancelled = true;
+
+        _context.RentalSchedules.Update(rental);
+
+        return Ok();
+
     }
     
 }

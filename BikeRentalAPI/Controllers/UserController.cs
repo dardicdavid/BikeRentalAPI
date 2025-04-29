@@ -1,11 +1,12 @@
 ﻿using BikeRentalAPI.Database;
 using BikeRentalAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BikeRentalAPI.Controllers;
 
-[Route("users/[controller]")]
+[Route("users/")]
 public class UserController : Controller
 {
     
@@ -33,6 +34,13 @@ public class UserController : Controller
         //registering previously created user into auth table
         var result1 = await _userManager.CreateAsync(user, user.PasswordHash!);
         
+        var roleResult = await _userManager.AddToRoleAsync(user, "User");
+
+        if (!roleResult.Succeeded)
+        {
+            return BadRequest(roleResult.Errors);
+        }
+        
         //getting user id
         var userId = await _userManager.GetUserIdAsync(user);
         UserInfo userInfo = new()
@@ -42,10 +50,18 @@ public class UserController : Controller
             UserId = userId
         };
         
-        //adding additional user information into separate table
-        _context.UserInfos.Add(userInfo);
-        var result2 = await _context.SaveChangesAsync();
-        
+        int result2 = 0;
+        if (result1.Succeeded)
+        {
+            //adding additional user information into separate table
+            _context.UserInfos.Add(userInfo);
+            result2 = await _context.SaveChangesAsync();
+        }
+        else
+        {
+            return BadRequest("Failed to register user credentials!");
+        }
+
 
         if (result1.Succeeded && result2 > 0)
         {
@@ -55,6 +71,7 @@ public class UserController : Controller
         return BadRequest("Failed to register user!");
     }
 
+    [Authorize(Roles = "User, Admin")]
     [HttpPost("logout")]
     public async Task<ActionResult> LogOut()
     {

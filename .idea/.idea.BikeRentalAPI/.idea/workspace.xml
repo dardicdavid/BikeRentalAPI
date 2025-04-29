@@ -11,12 +11,17 @@
   <component name="ChangeListManager">
     <list default="true" id="d1764dc0-8e31-4946-8a12-df1d726bd550" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BikeRentalAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BikeRentalAPI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BikeRentalAPI/Controllers/BikeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BikeRentalAPI/Controllers/BikeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BikeRentalAPI.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/BikeRentalAPI.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BikeRentalAPI/BikeRentalAPI.http" beforeDir="false" afterPath="$PROJECT_DIR$/BikeRentalAPI/BikeRentalAPI.http" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BikeRentalAPI/Controllers/RentalScheduleController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BikeRentalAPI/Controllers/RentalScheduleController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BikeRentalAPI/Controllers/StationController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BikeRentalAPI/Controllers/StationController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BikeRentalAPI/Controllers/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BikeRentalAPI/Controllers/UserController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BikeRentalAPI/Controllers/UserInfoController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BikeRentalAPI/Controllers/UserInfoController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BikeRentalAPI/Migrations/ApplicationDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BikeRentalAPI/Migrations/ApplicationDbContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BikeRentalAPI/Models/Bike.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BikeRentalAPI/Models/Bike.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BikeRentalAPI/Models/DTO/UserInfoGetResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BikeRentalAPI/Models/DTO/UserInfoGetResponse.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BikeRentalAPI/Models/RentalSchedule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BikeRentalAPI/Models/RentalSchedule.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BikeRentalAPI/Models/Station.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BikeRentalAPI/Models/Station.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BikeRentalAPI/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BikeRentalAPI/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BikeRentalAPI/bin/Debug/net8.0/BikeRentalAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/BikeRentalAPI/bin/Debug/net8.0/BikeRentalAPI.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BikeRentalAPI/bin/Debug/net8.0/BikeRentalAPI.exe" beforeDir="false" afterPath="$PROJECT_DIR$/BikeRentalAPI/bin/Debug/net8.0/BikeRentalAPI.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BikeRentalAPI/bin/Debug/net8.0/BikeRentalAPI.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/BikeRentalAPI/bin/Debug/net8.0/BikeRentalAPI.pdb" afterDir="false" />
@@ -49,6 +54,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/96a4cc66aa48dda8a9d8be8febec4a769fc143f7a86dd53ecdebfb9c3177d/ControllerBase.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c7da56581ee7b20208f09e80b735961e4d5d7b9e5562bfdec94a75c57b391/ThrowHelper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d399b0dd50b08f7f90be4dfbd852c2db7ab21e28ab02ea4a155287700f32b/NotFoundResult.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d8d9726f3deb1bbf671f5b791e4dc3e0338219a996f439ad2a69024b825c60/UserManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ddfe5f2cab585726db85fc046e76ea5725f69d647c242379a11c6da8029c727/ClaimsPrincipal.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -64,22 +70,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.BikeRentalAPI: IIS Express.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settings.ide.settings.web.browsers",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.BikeRentalAPI: IIS Express.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Launch Settings Profile.BikeRentalAPI: http.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.9183006&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.web.browsers&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.BikeRentalAPI: IIS Express">
+}</component>
+  <component name="RunManager" selected=".NET Launch Settings Profile.BikeRentalAPI: http">
     <configuration name="BikeRentalAPI: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/BikeRentalAPI/BikeRentalAPI.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net8.0" />
@@ -150,7 +158,31 @@
       <workItem from="1732648759594" duration="5288000" />
       <workItem from="1733248849991" duration="1337000" />
       <workItem from="1733768946763" duration="1134000" />
-      <workItem from="1733775061096" duration="7066000" />
+      <workItem from="1733775061096" duration="7153000" />
+      <workItem from="1735683034737" duration="3274000" />
+      <workItem from="1737751904346" duration="802000" />
+      <workItem from="1737834822642" duration="625000" />
+      <workItem from="1738690852379" duration="1857000" />
+      <workItem from="1740329743102" duration="2775000" />
+      <workItem from="1740335734259" duration="32000" />
+      <workItem from="1740335784306" duration="1711000" />
+      <workItem from="1740340183100" duration="716000" />
+      <workItem from="1740519501183" duration="632000" />
+      <workItem from="1741029459963" duration="1780000" />
+      <workItem from="1741043006717" duration="833000" />
+      <workItem from="1741895943139" duration="2292000" />
+      <workItem from="1742045329746" duration="5982000" />
+      <workItem from="1742240997986" duration="2853000" />
+      <workItem from="1742845545168" duration="2118000" />
+      <workItem from="1742999497459" duration="1968000" />
+      <workItem from="1743104345392" duration="8277000" />
+      <workItem from="1743172671578" duration="4444000" />
+      <workItem from="1743282791542" duration="5866000" />
+      <workItem from="1743688009896" duration="4376000" />
+      <workItem from="1744036122274" duration="5249000" />
+      <workItem from="1744137472165" duration="1293000" />
+      <workItem from="1744206235793" duration="3350000" />
+      <workItem from="1744403688253" duration="187000" />
     </task>
     <servers />
   </component>
@@ -172,24 +204,5 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/BikeRentalAPI/Controllers/RentalScheduleController.cs</url>
-          <line>53</line>
-          <properties documentPath="C:\Users\David\source\repos\BikeRentalAPI\BikeRentalAPI\Controllers\RentalScheduleController.cs" containingFunctionPresentation="Method 'Rent'">
-            <startOffsets>
-              <option value="1692" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1737" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

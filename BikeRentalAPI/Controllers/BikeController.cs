@@ -18,6 +18,7 @@ public class BikeController : Controller
         _context = context;
     }
 
+    [Authorize(Roles = "User, Admin")]
     [HttpGet("getBikes")]
     public async Task<ActionResult<IEnumerable<Bike>>> GetBikes()
     {
@@ -29,7 +30,7 @@ public class BikeController : Controller
         return await _context.Bikes.ToListAsync();
     }
 
-    [AllowAnonymous]
+    [Authorize(Roles = "User, Admin")]
     [HttpGet("{Id}")]
     public async Task<ActionResult<Bike>> GetBike(int Id)
     {
@@ -47,8 +48,7 @@ public class BikeController : Controller
         return bike;
     }
     
-    //[Authorize(Roles = "Admin")]
-    [AllowAnonymous]
+    [Authorize(Roles = "Admin")]
     [HttpPost("addBike")]
     public async Task<ActionResult<Bike>> AddBike([FromBody]Bike bike)
     {
