@@ -63,4 +63,20 @@ public class BikeController : Controller
         return CreatedAtAction(nameof(GetBike), new { id = bike.Id }, bike);
 
     }
+
+    [Authorize(Roles = "Admin")]
+    [HttpDelete("deleteBike")]
+    public async Task<IActionResult> DeleteBike(int Id)
+    {
+        var bike = await _context.Bikes.FindAsync(Id);
+        if (bike is null)
+        {
+            return NotFound();
+        }
+        
+        _context.Bikes.Remove(bike);
+        var result = await _context.SaveChangesAsync();
+        
+        return result > 0 ? Ok("Bike deleted successfully.") : BadRequest();
+    }
 }

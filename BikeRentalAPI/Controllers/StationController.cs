@@ -72,4 +72,20 @@ public class StationController : Controller
         return CreatedAtAction(nameof(GetStation), new { id = station.Id }, station);
         
     }
+    
+    [Authorize(Roles = "Admin")]
+    [HttpDelete("deleteStation")]
+    public async Task<IActionResult> DeleteStation(int Id)
+    {
+        var station = await _context.Stations.FindAsync(Id);
+        if (station is null)
+        {
+            return NotFound();
+        }
+        
+        _context.Stations.Remove(station);
+        var result = await _context.SaveChangesAsync();
+        //TODO: REMOVE STATION REFERENCE FROM ALL TABLES
+        return result > 0 ? Ok("Station deleted successfully.") : BadRequest();
+    }
 }

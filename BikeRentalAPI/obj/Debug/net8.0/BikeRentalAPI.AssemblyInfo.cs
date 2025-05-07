@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BikeRentalAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d1134b226f713e08d9fc04b89f24de7ad9ffe18c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9fe7ca5deb36e39f348ba66de30818ba3e9cde57")]
 [assembly: System.Reflection.AssemblyProductAttribute("BikeRentalAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BikeRentalAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
